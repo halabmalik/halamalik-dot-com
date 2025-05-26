@@ -2,9 +2,8 @@
 layout: library-layout.njk
 title: "The Garden Against Time"
 author: "Olivia Laing"
-start_date:
 end_date: 2025-05-26
-git astatus: "Currently Reading"
+status: "Currently Reading"
 rating: ""
 format: "Book"
 genre: ""
