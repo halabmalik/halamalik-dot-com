@@ -1,6 +1,6 @@
 ---
 layout: library-layout.njk
-title: "Things I Dont't Want To Know"
+title: "Things I Don't Want To Know"
 author: "Deborah Levy"
 start_date: 2024-05-31
 end_date: 2024-06-01
