@@ -1,0 +1,19 @@
+{
+    "name": "Hala B Malik",
+    "short_name": "HBM",
+    "icons": [
+        {
+            "src": "/assets/favicon.svg",
+            "sizes": "32x32",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/assets/favicon.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "display": "standalone"
+} 

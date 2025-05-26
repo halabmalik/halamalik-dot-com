@@ -1,0 +1,58 @@
+---
+layout: layout.njk
+title: Posts
+---
+<h2 class="section-title">Blog</h2>
+<p class="note">Mostly weeknotes, in an effort to achieve some sort of consistency with posting. There might be an occassional blogpost or essay, but expect that to be very rare.
+</p>
+ <hr style="width: 100px; margin-left: 0; margin-bottom: .5rem;">
+
+<h4>Tags:</h4>
+<div class="tag-filter">
+    <button class="tag-filter-btn active" data-tag="all">all</button>
+    {% for tag in collections.tagList %}
+    <button class="tag-filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+    {% endfor %}
+</div>
+<hr style="width: 100px; margin: 1.5rem 0;">
+
+<ul class="post-list">
+{% for post in collections.posts | sort(attribute="data.date") | reverse %}
+  <li class="post-item-wrapper" data-tags="{% if post.data.tags %}{{ post.data.tags | join(' ') }}{% endif %}">
+    <div class="post-item">
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      {% if post.data.date %}
+      <div class="post-date">{{ post.data.date | date | upper }}</div>
+      {% endif %}
+     
+    </div>
+  </li>
+{% endfor %}
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.tag-filter-btn');
+    const postItems = document.querySelectorAll('.post-item-wrapper');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state of buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const selectedTag = button.getAttribute('data-tag');
+
+            // Filter posts
+            postItems.forEach(post => {
+                if (selectedTag === 'all') {
+                    post.style.display = '';
+                } else {
+                    const postTags = post.getAttribute('data-tags').split(' ');
+                    post.style.display = postTags.includes(selectedTag) ? '' : 'none';
+                }
+            });
+        });
+    });
+});
+</script>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <nav class="top-nav">
+    <div class="nav-container">
+        <a href="/">HBM</a>
+        <div class="nav-links">
+        
+            <a href="/about">about</a>
+            <a href="/posts">blog</a>
+            <a href="/library">library</a>
+            <a href="http://www.hy-pr.com">work<span class="raised-arrow">&#8599;</span></a>  
+          
+        </div>
+    </div>
+</nav> 
+    <div class="container">
+        <main class="post-content">
+            
+            
+            <h2 class="section-title">Blog</h2>
+<p class="note">Mostly weeknotes, in an effort to achieve some sort of consistency with posting. There might be an occassional blogpost or essay, but expect that to be very rare.
+</p>
+ <hr style="width: 100px; margin-left: 0; margin-bottom: .5rem;">
+
+<h4>Tags:</h4>
+<div class="tag-filter">
+    <button class="tag-filter-btn active" data-tag="all">all</button>
+    
+    <button class="tag-filter-btn" data-tag="blog">blog</button>
+    
+    <button class="tag-filter-btn" data-tag="meta">meta</button>
+    
+    <button class="tag-filter-btn" data-tag="reading">reading</button>
+    
+    <button class="tag-filter-btn" data-tag="weeknote">weeknote</button>
+    
+</div>
+<hr style="width: 100px; margin: 1.5rem 0;">
+
+<ul class="post-list">
+
+  <li class="post-item-wrapper" data-tags="blog weeknote meta">
+    <div class="post-item">
+      <a href="/posts/notesbooks_and_weeknotes/">Notebooks and Weeknotes</a>
+      
+      <div class="post-date">MAY 26, 2025</div>
+      
+     
+    </div>
+  </li>
+
+  <li class="post-item-wrapper" data-tags="blog reading">
+    <div class="post-item">
+      <a href="/posts/finding_ursula/">Finding Ursula</a>
+      
+      <div class="post-date">JULY 4, 2024</div>
+      
+     
+    </div>
+  </li>
+
+  <li class="post-item-wrapper" data-tags="blog">
+    <div class="post-item">
+      <a href="/posts/pleasures_and_terrors_of_levitation/">Pleasures and Terrors of Levitation</a>
+      
+      <div class="post-date">MARCH 23, 2024</div>
+      
+     
+    </div>
+  </li>
+
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.tag-filter-btn');
+    const postItems = document.querySelectorAll('.post-item-wrapper');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state of buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const selectedTag = button.getAttribute('data-tag');
+
+            // Filter posts
+            postItems.forEach(post => {
+                if (selectedTag === 'all') {
+                    post.style.display = '';
+                } else {
+                    const postTags = post.getAttribute('data-tags').split(' ');
+                    post.style.display = postTags.includes(selectedTag) ? '' : 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+    {% include "nav.njk" %}
+    <div class="container">
+        <main class="post-content">
+            {% if subtitle %}
+            <h2 class="post-subtitle">{{ subtitle }}</h2>
+            {% endif %}
+            {% if date %}
+            <div class="post-date">{{ date | date }}</div>
+            {% endif %}
+            {{ content | safe }}
+        </main>
+    </div>
+</body>
+</html>

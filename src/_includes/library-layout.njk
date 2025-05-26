@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {% include "nav.njk" %}
+    <div class="container">
+        <main class="post-content">
+           <a href="/library" class="back-link">↑ BACK TO LIBRARY</a>
+           <h1 class="post-title">{{ title }}</h1>
+            {% if author %}
+           <div class="library-author">BY {{ author | upper }}</div>
+            {% endif %}
+            <div class="library-content">
+                {% if thumbnail %}
+                <div class="library-thumbnail">
+                    <img src="{{ thumbnail }}" alt="{{ title }} thumbnail">
+                </div>
+                {% endif %}
+                <div class="library-meta">
+                 {% if format %}
+                    <div class="library-meta-item">{{ format }} {% if genre %} | {{ genre }}
+                    {% endif %}</div>
+                    {% endif %}
+                    <br>
+                    {% if start_date %}
+                    <div class="library-meta-item">Started: {{ start_date | date }}</div>
+                    {% endif %}
+                    {% if end_date %}
+                    <div class="library-meta-item">Finished: {{ end_date | date }}</div>
+                    {% endif %}
+                    {% if status %}
+                    <div class="library-meta-item">Status: {{ status }}</div>
+                    {% endif %}
+                  
+                   
+                     <br>
+                    {% if external_url %}
+                    <div class="library-meta-item"><a href="{{ external_url }}" target="_blank" rel="noopener noreferrer">
+                    LINK TO SOURCE<span class="raised-arrow">&#8599;</span></a></div>
+                    {% endif %}
+                </div>
+            </div>
+         <hr style="margin-bottom: 1rem; width: 700px;">
+            {{ content | safe }}
+        </main>
+    </div>
+</body>
+</html> 

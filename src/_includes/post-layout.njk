@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {% include "nav.njk" %}
+    <div class="container">
+        <main class="post-content">
+            <a href="/posts" class="back-link">↑ BACK TO BLOG</a>
+            <h1 class="post-title">{{ title }}</h1>
+            {% if subtitle %}
+            <h2 class="post-subtitle">{{ subtitle }}</h2>
+            {% endif %}
+            {% if date %}
+            <div class="post-date">{{ date | date }}</div>
+            {% endif %}
+        
+            {{ content | safe }}
+
+            
+            {% if tags %}
+            <hr style="border: none; border-top: 1px dotted #666; margin: 1.5rem 0 0.75rem 0;">
+            <div class="post-tags">
+                {% for tag in tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="post-navigation">
+                {% set posts = collections.posts %}
+                {% set currentIndex = posts | findIndex(page.url) %}
+                {% if currentIndex > 0 %}
+                <div class="prev-post">
+                    ← <a href="{{ posts[currentIndex - 1].url }}">{{ posts[currentIndex - 1].data.title }}</a>
+                </div>
+                {% endif %}
+                {% if currentIndex < posts.length - 1 %}
+                <div class="next-post">
+                    <a href="{{ posts[currentIndex + 1].url }}">{{ posts[currentIndex + 1].data.title }}</a> →
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

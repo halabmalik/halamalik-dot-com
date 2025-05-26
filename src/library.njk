@@ -1,0 +1,78 @@
+---
+layout: layout.njk
+title: Library
+bodyClass: library-page
+---
+<link rel="stylesheet" href="/css/library.css"> 
+<h2 class="section-title">Library</h2>
+
+<div class="library-intro">
+    <p class="note">
+    Anything that I've read, listened to or watched that has resonated with me. Not exhaustive by any means. Will try to be regular with updating as I go from May 2025 onwards, but for books, movies, tv shows, podcasts and music read/listened to/watched prior to that, it will be a slow process
+    of adding them to the grid one by one. Highlighted tabs are what I am currently reading/listening to/watching. Music, podcasts, movies and tv shows only make it to this list if I absolutely love them or if, for some reason, I want to log them for the record.
+    </p>
+    </div>
+    <hr style="width: 100px; margin-left: 0; margin-bottom: .5rem;">
+    <h4>Formats:</h4>
+    <div class="tag-filter"> {# Reusing tag-filter class for consistent styling #}
+        <button class="tag-filter-btn active" data-format="all">All</button>
+        {% for format in collections.formatList %}
+            {% if format %}
+            <button class="tag-filter-btn" data-format="{{ format | slug }}">{{ format }}</button>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <hr style="width: 100px; margin: 1.5rem 0;">
+
+
+<div class="library-grid">
+{% set activeItems = collections.library | activeItems %}
+
+{% for item in collections.library | sort(attribute='data.end_date', reverse=true) %}
+    <article class="library-item{% if item.data.status in ['Currently Reading', 'Currently Watching', 'Listening'] %} is-highlighted{% endif %}" data-format="{% if item.data.format %}{{ item.data.format | slug }}{% endif %}">
+        <div class="library-thumbnail">
+            <img src="{% if item.data.thumbnail %}{{ item.data.thumbnail }}{% else %}https://placehold.co/300x400/e2e8f0/1e293b?text={{ item.data.title | urlencode }}{% endif %}" alt="{{ item.data.title }}">
+        </div>
+        
+        <div class="library-content">
+         {% if item.data.format %}
+                <div class="note">{{ item.data.format }}</div>
+                {% endif %}
+            <h3 class="library-title">
+                {% if item.content | safe | trim | length > 0 %}
+                <a href="{{ item.url }}">{{ item.data.title }}</a>
+                {% else %}
+                {{ item.data.title }}
+                {% endif %}
+                 {% if item.data.author %}
+                <div class="library-meta-item">by {{ item.data.author }}</div>
+                {% else %}
+                <div class="library-meta-item">&nbsp;</div>
+                {% endif %}
+                {% if item.data.external_url %}
+                <div class="note" style="margin-top: 1rem;"><a href="{{ item.data.external_url }}" target="_blank" rel="noopener noreferrer">LINK TO SOURCE<span class="raised-arrow">&#8599;</span></a></div>
+                {% else %}
+                <div class="note" style="margin-top: 1rem;">&nbsp;</div>
+                {% endif %}
+                
+                <hr style="margin-top: 1rem;">
+            </h3>
+            
+     
+            
+            {% if item.data.notes %}
+            <div class="note">{{ item.data.notes }}</div>
+            {% endif %}
+
+            {% if item.content | safe | trim | length > 0 %}
+            <div><a href="{{ item.url }}" class="read-notes-link">Read notes →</a></div>
+            {% else %}
+                <div class="library-meta-item">&nbsp;</div>
+            {% endif %}
+        </div>
+    </article>
+{% endfor %}
+</div>
+
+<script src="/js/library-filter.js"></script>
+

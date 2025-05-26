@@ -1,0 +1,21 @@
+---
+layout: index-layout.njk
+title: Hala Bashir Malik
+---
+
+{% set latestPost = collections.posts | sort(attribute="data.date") | reverse | first %}
+<div class="hero-section">
+    <h1 class="hero-text">Hala B Malik. Architect. Designer. <span class="highlight">Founder of Hyper—Practice.</span> Currently setting up Lahore Urban Archive. <span class="highlight">Based in Lahore, Pakistan.</span> But also on the internet like it's a place. Mother to R. Strong views on tech, design, <i>and</i> bedtime logistics. ✺ Read the latest post: <span class="highlight"><a href="{{ latestPost.url }}" style="color: #00ffe7; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">{{ latestPost.data.title }}</a></span></h1>
+</div>
+
+<hr style="border:none; border-top: 1px dashed #666; margin: 0rem 0rem 0rem 0rem;">
+
+<div class="hero-section">
+<p class="note">
+
+Email: <span>hbm@hy-pr<b style="display: none;">.BYEBOTS</b>.com</span> <br>
+Instagram: <a href="https://www.instagram.com/hala.b.malik/">@hala.b.malik</a><br> 
+Threads: <a href="https://www.threads.com/@hala.b.malik/">@hala.b.malik</a><br>  
+Bluesky: <a href="https://bsky.app/profile/hbm.bsky.social">@hbm.bsky.social
+</p>
+</div>
