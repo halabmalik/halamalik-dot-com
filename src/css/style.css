@@ -381,7 +381,7 @@ a:hover, a:focus {
     }
 
     .container {
-        margin: 1rem 0.5rem;
+        margin: 1rem 0.5rem 10rem 0.5rem;
         padding: 0;
     }
     
@@ -642,7 +642,7 @@ body:has(.index-content) .top-nav .nav-container {
     }
 
     .container {
-        margin: 1rem 0.5rem;
+        margin: 1rem 0.5rem 10rem 0.5rem;
         padding: 0;
     }
 }
