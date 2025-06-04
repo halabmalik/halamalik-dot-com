@@ -1,6 +1,6 @@
 ---
 layout: post-layout.njk
-title: Weeknote 000 - Gardening, Driving and Parenting
+title: Weeknote 000 - A Garden While Time Happens
 date: 2025-06-01
 tags: weeknote,reading,gardening,parenting
 ---
