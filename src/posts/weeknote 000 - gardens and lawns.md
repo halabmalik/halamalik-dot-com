@@ -1,6 +1,6 @@
 ---
 layout: post-layout.njk
-title: Weeknote 000 - Schools, gardens and lawns
+title: Weeknote 000 - Gardening, Driving and Parenting
 date: 2025-06-01
 tags: weeknote,reading,gardening,parenting
 ---
